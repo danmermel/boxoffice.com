@@ -1,12 +1,11 @@
 <html>
 
   <body>
-<div id="app-2">
-  <span v-bind:title="message">
-    Hover your mouse over me for a few seconds
-    to see my dynamically bound title!
-  </span>
-</div>  
+
+<div id="app-3">
+  <p v-if="seen">Now you see me</p>
+</div>
+
   </body>
   <script src="//cdn.jsdelivr.net/pouchdb/6.1.2/pouchdb.min.js"></script>
   <script src="https://unpkg.com/vue"></script>
@@ -17,11 +16,12 @@
     db.allDocs({include_docs:true}).then(function (data){
       console.log(data)
     })
-var app2 = new Vue({
-  el: '#app-2',
+
+var app3 = new Vue({
+  el: '#app-3',
   data: {
-    message: 'You loaded this page on ' + new Date()
+    seen: true
   }
-})    
+})
   </script>
 </html>
