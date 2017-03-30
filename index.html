@@ -29,9 +29,10 @@
           db.allDocs({include_docs:true}).then(function (data){
             console.log(data);
             var seats = [];
-            for (var i =0; data.length; i++) {
+            for (var i =0; data.rows.length; i++) {
                seats.push(data.rows[i].doc);
             }
+            console.log(seats);
             app.seats = seats
           })
         }
