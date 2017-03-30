@@ -2,10 +2,13 @@
 
   <body>
 
-<div id="app-3">
-  <p v-if="seen">Now you see me</p>
+<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
 </div>
-
   </body>
   <script src="//cdn.jsdelivr.net/pouchdb/6.1.2/pouchdb.min.js"></script>
   <script src="https://unpkg.com/vue"></script>
@@ -17,11 +20,16 @@
       console.log(data)
     })
 
-var app3 = new Vue({
-  el: '#app-3',
+var app4 = new Vue({
+  el: '#app-4',
   data: {
-    seen: true
+    todos: [
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue' },
+      { text: 'Build something awesome' }
+    ]
   }
 })
+
   </script>
 </html>
