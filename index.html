@@ -1,15 +1,25 @@
 <html>
 
   <body>
-    
+    <div id="app">
+      {{ message }}
+    </div>
+  
   </body>
   <script src="//cdn.jsdelivr.net/pouchdb/6.1.2/pouchdb.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
   <script>
     var gig_address = "0x5b704b833b39877c224ed2042562db4dcdaf24fa";
     var cloudant_url = "https://landreg.cloudant.com/";
     var db = new PouchDB(cloudant_url+"gig_"+gig_address);
     db.allDocs({include_docs:true}).then(function (data){
       console.log(data)
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: "Hello World"
+      }
     })
     
   </script>
