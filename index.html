@@ -2,13 +2,14 @@
 
   <body>
 
-<div id="app-4">
-  <ol>
-    <li v-for="todo in todos">
-      {{ todo.text }}
-    </li>
-  </ol>
-</div>
+    <div id="app">
+      <button v-on:click="getSeats">Get Seats!</button>
+      <ul>
+        <li v-for="seat in seats">
+          {{ seat.seat_name }}
+        </li>
+      </ul>
+    </div>
   </body>
   <script src="//cdn.jsdelivr.net/pouchdb/6.1.2/pouchdb.min.js"></script>
   <script src="https://unpkg.com/vue"></script>
@@ -16,20 +17,24 @@
     var gig_address = "0x5b704b833b39877c224ed2042562db4dcdaf24fa";
     var cloudant_url = "https://landreg.cloudant.com/";
     var db = new PouchDB(cloudant_url+"gig_"+gig_address);
-    db.allDocs({include_docs:true}).then(function (data){
-      console.log(data)
-    })
 
-var app4 = new Vue({
-  el: '#app-4',
-  data: {
-    todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
-    ]
-  }
-})
+    var app = new Vue({
+      el: '#app',
+      data: {
+        seats: [] 
+      },
+      methods: {
+        getSeats: function () {
+          db.allDocs({include_docs:true}).then(function (data){
+            var seats = []
+            for (var i =0; data.length, i++) {
+               seats.push(data.rows[i].doc);
+            }
+            this.seats = seats
+          })
+        }
+      }
+    })
 
   </script>
 </html>
