@@ -25,12 +25,14 @@
       },
       methods: {
         getSeats: function () {
+          console.log("in getSeats");
           db.allDocs({include_docs:true}).then(function (data){
-            var seats = []
+            console.log(data);
+            var seats = [];
             for (var i =0; data.length; i++) {
                seats.push(data.rows[i].doc);
             }
-            this.seats = seats
+            app.seats = seats
           })
         }
       }
