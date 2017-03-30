@@ -29,7 +29,7 @@
           db.allDocs({include_docs:true}).then(function (data){
             console.log(data);
             var seats = [];
-            for (var i =0; data.rows.length; i++) {
+            for (var i =0; i<data.rows.length; i++) {
                seats.push(data.rows[i].doc);
             }
             console.log(seats);
