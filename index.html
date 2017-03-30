@@ -27,7 +27,7 @@
         getSeats: function () {
           db.allDocs({include_docs:true}).then(function (data){
             var seats = []
-            for (var i =0; data.length, i++) {
+            for (var i =0; data.length; i++) {
                seats.push(data.rows[i].doc);
             }
             this.seats = seats
