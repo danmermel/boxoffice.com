@@ -29,32 +29,32 @@
       }
     }
 
- var render_data = function (gig_address) {   
-    console.log(gig_address);
-    var cloudant_url = "https://landreg.cloudant.com/";
-    var db = new PouchDB(cloudant_url+"gig_"+gig_address);
+    var render_data = function (gig_address) {   
+      console.log(gig_address);
+      var cloudant_url = "https://landreg.cloudant.com/";
+      var db = new PouchDB(cloudant_url+"gig_"+gig_address);
 
-    var app = new Vue({
-      el: '#app',
-      data: {
-        seats: [] 
-      },
-      methods: {
-        getSeats: function () {
-          console.log("in getSeats");
-          db.allDocs({include_docs:true}).then(function (data){
-            console.log(data);
-            var seats = [];
-            for (var i =0; i<data.rows.length; i++) {
-               seats.push(data.rows[i].doc);
-            }
-            console.log(seats);
-            app.seats = seats
-          })
-        }
-      }
-    })
-}
+      var app = new Vue({
+        el: '#app',
+        data: {
+          seats: [] 
+        },
+        methods: {
+          getSeats: function () {
+            console.log("in getSeats");
+            db.allDocs({include_docs:true}).then(function (data){
+              console.log(data);
+              var seats = [];
+              for (var i =0; i<data.rows.length; i++) {
+                 seats.push(data.rows[i].doc);
+              }
+              console.log(seats);
+              app.seats = seats
+            })
+          }  //getSeats
+        }   //methods
+      })   //app
+   }  //render_data
 
     $( document ).ready(function() {
       init();
