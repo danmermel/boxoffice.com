@@ -24,8 +24,12 @@
       if (gig_address == "") {
         console.log("No gig address")
       }    //if
+      else {
+        render_data(gig_address);
+      }
     }
 
+ var render_data = function (gig_address) {   
     console.log(gig_address);
     var cloudant_url = "https://landreg.cloudant.com/";
     var db = new PouchDB(cloudant_url+"gig_"+gig_address);
@@ -50,6 +54,7 @@
         }
       }
     })
+}
 
     $( document ).ready(function() {
       init();
