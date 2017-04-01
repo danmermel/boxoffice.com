@@ -6,8 +6,8 @@
       <button v-on:click="getSeats">Get Seats!</button>
       <ul>
         <li v-for="seat in seats">
-          {{ seat.seat_name }}
-          {{ seat.event_name }}
+          <h3>{{ seat.seat_name }} - {{ seat.event_name }}</h3>
+          <p>{{ seat.status }}</p>
         </li>
       </ul>
     </div>
