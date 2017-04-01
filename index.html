@@ -45,8 +45,10 @@
             db.allDocs({include_docs:true}).then(function (data){
               console.log(data);
               var seats = [];
-              for (var i =0; i<data.rows.length; i++) {
-                 seats.push(data.rows[i].doc);
+              for (var i=0; i<data.rows.length; i++) {
+                 if (data.rows[i].doc._id[0] != '_') {
+                   seats.push(data.rows[i].doc);
+                 }
               }
               console.log(seats);
               app.seats = seats
